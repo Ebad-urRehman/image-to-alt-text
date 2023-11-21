@@ -54,16 +54,8 @@ def get_download_path():
     return download_dir
 
 # save csv file in download path
-def save_csv():
-    download_path = f"{get_download_path()}\Alt-text-CSV-Files"
-    # writing data to csv file
-    if not os.path.exists(download_path):
-        os.makedirs(download_path)
-    file_name = f"{date}-{formatted_time}.csv"
-    full_directory = f"{download_path}\{file_name}"
-    st.session_state.mydataframe.to_csv(full_directory, index=False)
-    st.info("Find downloads in C:/Users/<User_name>/Downloads/Alt-text-CSV-Files")
-    st.success(f"'{file_name}' Downloaded successfully.")
+def end_program():
+    st.success(f"File Downloaded successfully.")
     st.dataframe(st.session_state.mydataframe)
     st.stop()
 
@@ -115,6 +107,11 @@ if "mydataframe" not in st.session_state:
     st.session_state.mydataframe = []
 
 
+button_clicked = st.download_button("Download as CSV", data=output_csv, file_name=date, mime='text/csv')
+
+if button_clicked:
+    end_program()
+    
 # if button_clicked:
 #         save_csv()
 #         button_clicked = False
@@ -200,7 +197,5 @@ if button_clicked is False:
             st.session_state.mydataframe = dataframe
 
             output_csv = st.session_state.mydataframe.to_csv(index=False).encode('utf-8')
-
-            st.download_button("Download as CSV", data=output_csv, file_name=date, mime='text/csv')
 
 
