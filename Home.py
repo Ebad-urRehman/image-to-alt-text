@@ -132,7 +132,7 @@ if button_clicked is False:
         urls_byte_format = txt_file.read()
 
         # converting bytes to string
-        urls_string = urls_byte_format.decode('utf-16')
+        urls_string = urls_byte_format.decode()
 
         # handling for when text file is empty
         if urls_string is not None:
