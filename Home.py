@@ -16,7 +16,7 @@ class Chatbot:
     def get_seo_optimized_words(self, messages):
         try:
             # my_api_key = os.getenv("OPEN AI KEY")
-            my_api_key = os.getenv(st.secrets["API_KEY"])
+            my_api_key = st.secrets.API_KEY
             client = openai.OpenAI(api_key=my_api_key)
             response = client.chat.completions.create(
                 model="gpt-4-vision-preview",
