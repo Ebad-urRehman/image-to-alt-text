@@ -81,7 +81,7 @@ formatted_time = time.strftime("%I-%M-%S %p", current_time)
 links_input = ""
 url_list = []
 response_list = []
-
+output_csv = None
 # i is used to confirm that invalid url are present or not for one time
 i = 1
 # j is used to calculate invalid number of urls
@@ -114,7 +114,7 @@ txt_file = st.file_uploader("Upload a text file", type="txt")
 if "mydataframe" not in st.session_state:
     st.session_state.mydataframe = []
 
-st.download_button("Download as CSV", data=st.session_state.mydataframe, file_name=date, mime='text/csv')
+
 # if button_clicked:
 #         save_csv()
 #         button_clicked = False
@@ -198,5 +198,9 @@ if button_clicked is False:
 
             # backup dataframe
             st.session_state.mydataframe = dataframe
+
+            output_csv = st.session_state.mydataframe.to_csv(index=False).encode('utf-8')
+
+            st.download_button("Download as CSV", data=output_csv, file_name=date, mime='text/csv')
 
 
