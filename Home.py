@@ -104,7 +104,7 @@ txt_file = st.file_uploader("Upload a text file", type="txt")
 
 # # story dataframe in
 if "mydataframe" not in st.session_state:
-    st.session_state.mydataframe = {"A": [1, 2, 3], "B": [4, 5, 6]}
+    st.session_state.mydataframe = pandas.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
 
 
 output_csv = st.session_state.mydataframe.to_csv(index=False).encode('utf-8')
