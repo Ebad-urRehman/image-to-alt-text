@@ -114,7 +114,7 @@ txt_file = st.file_uploader("Upload a text file", type="txt")
 if "mydataframe" not in st.session_state:
     st.session_state.mydataframe = []
 
-st.download_button("Download as CSV", st.session_state.mydataframe, date, mime='text/csv')
+st.download_button("Download as CSV", data=st.session_state.mydataframe, file_name=date, mime='text/csv')
 # if button_clicked:
 #         save_csv()
 #         button_clicked = False
