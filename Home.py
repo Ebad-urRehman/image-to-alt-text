@@ -114,10 +114,10 @@ txt_file = st.file_uploader("Upload a text file", type="txt")
 if "mydataframe" not in st.session_state:
     st.session_state.mydataframe = []
 
-button_clicked = st.button("Download as CSV")
-if button_clicked:
-        save_csv()
-        button_clicked = False
+st.download_button("Download as CSV", st.sessionstate.mydataframe, date, mime='text/csv')
+# if button_clicked:
+#         save_csv()
+#         button_clicked = False
 
 if button_clicked is False:
     # Split the string into a list of urls by a \n character
